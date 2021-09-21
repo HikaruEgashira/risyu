@@ -2,12 +2,14 @@ lockfileVersion: 5.3
 
 specifiers:
   '@octokit/action': ^3.15.8
+  '@types/js-yaml': ^4.0.3
   '@types/node': ^15
   consola: ^2.15.3
   csv-parse: ^4.16.3
   dotenv: ^10.0.0
   esbuild-node-loader: ^0.3.1
   esmo: ^0.9.1
+  js-yaml: ^4.1.0
   playwright: ^1.14.1
 
 dependencies:
@@ -16,9 +18,11 @@ dependencies:
   consola: 2.15.3
   csv-parse: 4.16.3
   dotenv: 10.0.0
+  js-yaml: 4.1.0
   playwright: 1.14.1
 
 devDependencies:
+  '@types/js-yaml': 4.0.3
   esbuild-node-loader: 0.3.1
   esmo: 0.9.1
 
@@ -131,6 +135,10 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
+  /@types/js-yaml/4.0.3:
+    resolution: {integrity: sha512-5t9BhoORasuF5uCPr+d5/hdB++zRFUTMIZOzbNkr+jZh3yQht4HYbRDyj9fY8n2TZT30iW9huzav73x4NikqWg==}
+    dev: true
+
   /@types/node/15.14.9:
     resolution: {integrity: sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==}
     dev: false
@@ -155,6 +163,10 @@ packages:
       debug: 4.3.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /argparse/2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: false
 
   /ast-types/0.13.4:
@@ -489,6 +501,13 @@ packages:
 
   /jpeg-js/0.4.3:
     resolution: {integrity: sha512-ru1HWKek8octvUHFHvE5ZzQ1yAsJmIvRdGWvSoKV52XKyuyYA437QWDttXT8eZXDSbuMpHlLzPDZUPd6idIz+Q==}
+    dev: false
+
+  /js-yaml/4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
     dev: false
 
   /jsonc-parser/3.0.0:

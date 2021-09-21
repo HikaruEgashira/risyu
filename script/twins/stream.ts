@@ -1,27 +1,14 @@
 import parse from "csv-parse";
-import { finished } from "node:stream/promises";
-import type { Readable } from "node:stream";
-
-type Risyu = {
-  学籍番号: string;
-  学生氏名: string;
-  科目番号: string;
-  "科目名 ": string;
-  単位数: string;
-  春学期: string;
-  秋学期: string;
-  総合評価: string;
-  科目区分: string;
-  開講年度: string;
-  開講区分: string;
-};
+import { finished } from "stream/promises";
+import type { Readable } from "stream";
+import type { Course } from "script/types";
 
 export const processFile = async (
   stream: Readable | null
-): Promise<Risyu[]> => {
+): Promise<Course[]> => {
   if (stream === null) return [];
 
-  let records: Risyu[] = [];
+  let records: Course[] = [];
   const parser = stream.pipe(
     parse({
       columns: true,
@@ -31,7 +18,7 @@ export const processFile = async (
     let record;
     while ((record = parser.read())) {
       // Work with each record
-      records.push(JSON.parse(JSON.stringify(record)) as Risyu);
+      records.push(JSON.parse(JSON.stringify(record)) as Course);
     }
   });
   await finished(parser);

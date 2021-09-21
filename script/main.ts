@@ -7,4 +7,4 @@ config();
 const risyu = await runTwinsScript();
 console.log(risyu.splice(0, 3));
 
-await runGitHubScript();
+await runGitHubScript(risyu);
