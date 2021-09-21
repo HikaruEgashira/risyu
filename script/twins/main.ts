@@ -5,7 +5,7 @@ import { processFile } from "./stream";
 import { config } from "dotenv";
 
 export const main = async () => {
-  if (process.env.NODE_ENV === "development") config();
+  config();
 
   const username = process.env.TWINS_USERNAME;
   const password = process.env.TWINS_PASSWORD;

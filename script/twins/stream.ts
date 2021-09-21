@@ -1,6 +1,6 @@
 import parse from "csv-parse";
-import { finished } from "stream/promises";
-import { Readable } from "stream";
+import { finished } from "node:stream/promises";
+import type { Readable } from "node:stream";
 
 type Risyu = {
   学籍番号: string;
