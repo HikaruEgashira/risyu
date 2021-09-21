@@ -1,15 +1,10 @@
-import { Octokit } from "@octokit/action";
+import { main as runTwinsScript } from "./twins/main";
+import { main as runGitHubScript } from "./github/main";
 
-import { getProject } from "./github/getProject";
-import { main as runTwinsScraping } from "./twins/main";
+import { config } from "dotenv";
+config();
 
-const risyu = await runTwinsScraping();
-
-// GitHub Project
-
-const octokit = new Octokit();
-const [owner, repo] = process.env.GITHUB_REPOSITORY?.split("/") || [];
-const project = await getProject(octokit, "履修一覧");
-
-console.log(project);
+const risyu = await runTwinsScript();
 console.log(risyu);
+
+await runGitHubScript();

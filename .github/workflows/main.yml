@@ -10,9 +10,6 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "15"
       - name: Cache pnpm modules
         uses: actions/cache@v2
         with:
@@ -20,6 +17,10 @@ jobs:
           key: ubuntu-latest-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ubuntu-latest-
+      - name: Setup
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "15"
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.15.1

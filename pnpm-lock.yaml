@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@octokit/action': ^3.15.8
-  '@types/node': ^14.14.6
+  '@types/node': ^15
   consola: ^2.15.3
   csv-parse: ^4.16.3
   dotenv: ^10.0.0
@@ -12,7 +12,7 @@ specifiers:
 
 dependencies:
   '@octokit/action': 3.15.8
-  '@types/node': 14.17.17
+  '@types/node': 15.14.9
   consola: 2.15.3
   csv-parse: 4.16.3
   dotenv: 10.0.0
@@ -131,8 +131,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /@types/node/14.17.17:
-    resolution: {integrity: sha512-niAjcewgEYvSPCZm3OaM9y6YQrL2SEPH9PymtE6fuZAvFiP6ereCcvApGl2jKTq7copTIguX3PBvfP08LN4LvQ==}
+  /@types/node/15.14.9:
+    resolution: {integrity: sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==}
     dev: false
 
   /@types/node/16.9.4:

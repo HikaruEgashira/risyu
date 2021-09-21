@@ -13,9 +13,9 @@ export const login = async (page: Page, username: string, password: string) => {
 };
 
 export const download = async (page: Page) => {
+  consola.info("データをダウンロード中");
   await page.goto("/campusweb/campusportal.do?page=main&tabId=si");
 
-  // Click text=ダウンロード
   const frame = page.frame({
     name: "portlet-body",
   });

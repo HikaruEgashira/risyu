@@ -2,11 +2,9 @@ import pw from "playwright";
 
 import { download, login } from "./scraping";
 import { processFile } from "./stream";
-import { config } from "dotenv";
+import consola from "consola";
 
 export const main = async () => {
-  config();
-
   const username = process.env.TWINS_USERNAME;
   const password = process.env.TWINS_PASSWORD;
   if (!username || !password) {
@@ -14,6 +12,7 @@ export const main = async () => {
   }
 
   // PlayWright
+  consola.log("[scraping] start");
 
   const chromium = await pw.chromium.launch();
   const page = await chromium.newPage({
@@ -30,5 +29,6 @@ export const main = async () => {
   await dl.delete();
   await chromium.close();
 
+  consola.log("[scraping] done");
   return risyu;
 };
