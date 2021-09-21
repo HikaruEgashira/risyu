@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch: null
+jobs:
+  build:
+    name: Run script
+    runs-on: ubuntu-latest
+    env:
+      TWINS_USERNAME: ${{ secrets.TWINS_USERNAME }}
+      TWINS_PASSWORD: ${{ secrets.TWINS_PASSWORD }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ubuntu-latest-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ubuntu-latest-
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.15.1
+          run_install: true
+      - name: Build
+        run: pnpm main
