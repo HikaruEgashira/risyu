@@ -12,7 +12,7 @@ export const getProject = async (octokit: Octokit, name: string) => {
   const project = projects.find((project) => project.name === name);
   if (project) return project;
 
-  consola.info("新しいプロジェクトを作成中");
+  consola.log("新しいプロジェクトを作成中");
   const { data: newProject } = await octokit.rest.projects.createForRepo({
     owner,
     repo,

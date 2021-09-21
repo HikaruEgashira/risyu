@@ -5,6 +5,6 @@ import { config } from "dotenv";
 config();
 
 const risyu = await runTwinsScript();
-console.log(risyu);
+console.log(risyu.splice(0, 3));
 
 await runGitHubScript();

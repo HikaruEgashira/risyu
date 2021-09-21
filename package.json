@@ -1,7 +1,8 @@
 {
   "scripts": {
     "main": "esmo script/main.ts",
-    "dev": "PWDEBUG=1 pnpm main"
+    "dev": "PWDEBUG=1 pnpm main",
+    "dev:log": "DEBUG=pw:api,pw:browser* pnpm main"
   },
   "devDependencies": {
     "esbuild-node-loader": "^0.3.1",
