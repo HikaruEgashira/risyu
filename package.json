@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "main": "esmo script/main.ts",
+    "main": "esmo --experimental-json-modules script/main.ts",
     "dev": "PWDEBUG=1 pnpm main",
     "dev:log": "DEBUG=pw:api,pw:browser* pnpm main"
   },

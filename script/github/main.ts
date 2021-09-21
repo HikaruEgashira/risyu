@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/action";
 import consola from "consola";
-import scheme from "scheme.json";
+import scheme from "../../scheme.json";
 import type { Course } from "script/types";
 
 import { getProject } from "./getProject";
