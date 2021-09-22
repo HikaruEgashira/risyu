@@ -38,11 +38,11 @@ export const main = async (risyu: Course[]) => {
           RegExp(item.regex).test(course["科目番号"])
       )
       .splice(0, 2)
-      .map(async (course) => {
+      .map(async (course, i) => {
         return await octokit.rest.projects.createCard({
           column_id: columnSum.data.id,
           note: `${course["科目名 "]} ${course["単位数"]}`,
-          content_id: course["科目番号"],
+          content_id: i,
           content_type: "Task",
         });
       });
