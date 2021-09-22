@@ -4,6 +4,7 @@ import scheme from "../../scheme.json";
 import type { Course } from "script/types";
 
 import { getProject } from "./getProject";
+import { getColumn } from "./getColumn";
 
 export const main = async (risyu: Course[]) => {
   consola.log("[GitHub] start");
@@ -11,47 +12,44 @@ export const main = async (risyu: Course[]) => {
 
   const project = await getProject(octokit, "履修一覧");
 
-  const columnSum = await octokit.rest.projects.createColumn({
-    project_id: project.id,
-    name: "合計",
-  });
-  const sumTask = risyu.splice(0, 2).map(async (course) => {
+  const columnSum = await getColumn(octokit, project, "合計");
+  const sumTask = risyu.splice(0, 2).map(async (course, i) => {
     return await octokit.rest.projects.createCard({
-      column_id: columnSum.data.id,
+      column_id: columnSum.id,
       note: `${course["科目名 "]} ${course["単位数"]}`,
-      content_id: course["科目番号"],
+      content_id: i,
       content_type: "Task",
     });
   });
   await Promise.all(sumTask);
 
-  const task = scheme.items.map(async (item) => {
-    const column = await octokit.rest.projects.createColumn({
-      project_id: project.id,
-      name: item.name,
-    });
+  // const task = scheme.items.map(async (item) => {
+  //   const column = await octokit.rest.projects.createColumn({
+  //     project_id: project.id,
+  //     name: item.name,
+  //   });
 
-    const task = risyu
-      .filter(
-        (course) =>
-          RegExp(item.regex).test(course["科目名 "]) ||
-          RegExp(item.regex).test(course["科目番号"])
-      )
-      .splice(0, 2)
-      .map(async (course, i) => {
-        return await octokit.rest.projects.createCard({
-          column_id: columnSum.data.id,
-          note: `${course["科目名 "]} ${course["単位数"]}`,
-          content_id: i,
-          content_type: "Task",
-        });
-      });
-    await Promise.all(task);
+  //   const task = risyu
+  //     .filter(
+  //       (course) =>
+  //         RegExp(item.regex).test(course["科目名 "]) ||
+  //         RegExp(item.regex).test(course["科目番号"])
+  //     )
+  //     .splice(0, 2)
+  //     .map(async (course, i) => {
+  //       return await octokit.rest.projects.createCard({
+  //         column_id: columnSum.data.id,
+  //         note: `${course["科目名 "]} ${course["単位数"]}`,
+  //         content_id: i,
+  //         content_type: "Task",
+  //       });
+  //     });
+  //   await Promise.all(task);
 
-    return column;
-  });
-  const columns = await Promise.all(task);
-  consola.log(`[GitHub] ${columns[0].url}... generated`);
+  //   return column;
+  // });
+  // const columns = await Promise.all(task);
+  // consola.log(`[GitHub] ${columns[0].url}... generated`);
 
   consola.log("[GitHub] done");
 };

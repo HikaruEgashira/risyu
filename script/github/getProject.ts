@@ -20,3 +20,8 @@ export const getProject = async (octokit: Octokit, name: string) => {
   });
   return newProject;
 };
+
+type ReturnPromiseType<A extends (...args: any) => any> =
+  ReturnType<A> extends Promise<infer T> ? T : never;
+
+export type Project = ReturnPromiseType<typeof getProject>;
