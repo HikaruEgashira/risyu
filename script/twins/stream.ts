@@ -1,7 +1,7 @@
 import parse from "csv-parse";
 import { finished } from "stream/promises";
 import type { Readable } from "stream";
-import type { Course } from "script/types";
+import type { Course } from "domain/cource";
 
 export const processFile = async (
   stream: Readable | null
