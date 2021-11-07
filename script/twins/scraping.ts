@@ -1,5 +1,5 @@
 import consola from "consola";
-import { Page } from "playwright";
+import { Page, Download } from "playwright";
 
 export const login = async (page: Page, username: string, password: string) => {
   await page.goto("/", { waitUntil: "networkidle" });
@@ -12,7 +12,7 @@ export const login = async (page: Page, username: string, password: string) => {
   consola.log("ログイン成功");
 };
 
-export const download = async (page: Page) => {
+const dl = async (page: Page) => {
   consola.log("データをダウンロード中");
   await page.goto("/campusweb/campusportal.do?page=main&tabId=si");
 
@@ -27,4 +27,20 @@ export const download = async (page: Page) => {
   ]);
   consola.log("ダウンロード完了");
   return download;
+};
+
+let retry = 0;
+const retryMax = 3;
+export const download = async (page: Page): Promise<Download> => {
+  try {
+    return await dl(page);
+  } catch (error) {
+    if (retry === retryMax) {
+      throw new Error("Error: retry 3 count");
+    } else {
+      retry++;
+      consola.log("retry");
+      return await download(page);
+    }
+  }
 };

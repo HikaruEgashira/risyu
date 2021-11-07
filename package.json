@@ -1,21 +1,21 @@
 {
   "scripts": {
     "main": "esmo --experimental-json-modules script/main.ts",
-    "dev": "PWDEBUG=1 pnpm main",
-    "dev:log": "DEBUG=pw:api,pw:browser* pnpm main"
+    "dev": "PWDEBUG=1 esmo --experimental-json-modules script/test.ts",
+    "dev:log": "DEBUG=pw:api,pw:browser* pnpm dev"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.3",
-    "esbuild-node-loader": "^0.3.1",
-    "esmo": "^0.9.1"
+    "@types/js-yaml": "^4.0.4",
+    "esbuild-node-loader": "^0.5.0",
+    "esmo": "^0.11.0"
   },
   "dependencies": {
-    "@octokit/action": "^3.15.8",
-    "@types/node": "^15",
+    "@octokit/action": "^3.18.0",
+    "@types/node": "^16.11.6",
     "consola": "^2.15.3",
     "csv-parse": "^4.16.3",
     "dotenv": "^10.0.0",
     "js-yaml": "^4.1.0",
-    "playwright": "^1.14.1"
+    "playwright": "^1.16.3"
   }
 }
