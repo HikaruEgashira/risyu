@@ -11,6 +11,7 @@ const [owner, repo] = process.env.GITHUB_REPOSITORY?.split("/") || [];
 export const main = async (risyu: Course[]) => {
   consola.log("[GitHub] start");
   const octokit = new Octokit();
+
   await octokit.repos.update({
     owner,
     repo,

@@ -7,7 +7,7 @@ jobs:
     env:
       TWINS_USERNAME: ${{ secrets.TWINS_USERNAME }}
       TWINS_PASSWORD: ${{ secrets.TWINS_PASSWORD }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - name: Cache pnpm modules
