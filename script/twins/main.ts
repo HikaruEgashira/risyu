@@ -3,6 +3,7 @@ import pw from "playwright";
 import { download, login } from "./scraping";
 import { processFile } from "./stream";
 import consola from "consola";
+import { Course } from "domain/cource";
 
 export const main = async () => {
   const username = process.env.TWINS_USERNAME;

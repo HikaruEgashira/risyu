@@ -18,7 +18,10 @@ export const processFile = async (
     let record;
     while ((record = parser.read())) {
       // Work with each record
-      records.push(JSON.parse(JSON.stringify(record)) as Course);
+      const cource = JSON.parse(JSON.stringify(record));
+      delete cource["学籍番号"];
+      delete cource["名前"];
+      records.push(cource as Course);
     }
   });
   await finished(parser);

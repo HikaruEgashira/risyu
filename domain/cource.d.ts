@@ -1,6 +1,4 @@
 export type Course = {
-  学籍番号: string;
-  学生氏名: string;
   科目番号: string;
   "科目名 ": string;
   単位数: string;
